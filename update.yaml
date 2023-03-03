@@ -1,0 +1,20 @@
+- name: install base packages
+  apk:
+    name:
+      - bash
+      - btop
+      - curl
+      - k9s
+      - kubectl
+      - nmap
+      - python3
+      - speedtest-cli
+      - tailscale
+      - vim
+      - wget
+      - neovim
+    state: latest
+
+- name: upgrade all packages
+  apk:
+    upgrade: true

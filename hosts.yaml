@@ -1,0 +1,20 @@
+all:
+  children:
+    copehagen:
+      hosts:
+        copenhagen-[a:c]:
+    london:
+      hosts:
+        london-[a:c]:
+    paris:
+      hosts:
+        paris-a:
+    #saigon:
+      #hosts:
+        #saigon-[a:c]:
+    #sydney:
+      #hosts:
+        #sydney-[a:c]:
+    #austin:
+      #hosts:
+        #austin-[a:c]:
