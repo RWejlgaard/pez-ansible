@@ -1,0 +1,41 @@
+name: Apply Ansible
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install Tailscale
+        run: |
+          curl -fsSL https://tailscale.com/install.sh | sh
+
+      - name: Join Tailscale Network
+        run: |
+          sudo tailscale up --authkey=${{ secrets.TAILSCALE_AUTH_KEY }}
+
+      - name: Add private SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.PRIVATE_SSH_KEY_B64 }}" | base64 -d > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+      
+      - name: Create Vault Password File
+        run: |
+          echo "${{ secrets.VAULT_PASSWORD }}" > /tmp/vault_password.txt
+
+      - name: Install Ansible
+        run: |
+          sudo apt-get install ansible
+
+      - name: Run Ansible Playbook
+        run: |
+          ANSIBLE_HOST_KEY_CHECKING=false ansible-playbook -i hosts.yml --vault-password-file /tmp/vault_password.txt site.yml
