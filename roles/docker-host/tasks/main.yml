@@ -1,0 +1,16 @@
+- name: Docker installed (debian)
+  apt:
+    name: docker.io
+    state: present
+  when: ansible_os_family == "Debian"
+
+- name: Docker installed (alpine)
+  apk:
+    name: docker
+    state: present
+  when: ansible_os_family == "Alpine"
+
+- name: Enable docker service
+  service:
+    name: docker
+    state: started

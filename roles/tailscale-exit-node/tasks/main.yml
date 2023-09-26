@@ -1,0 +1,12 @@
+- name: Include secrets
+  include_vars: secrets.yml
+
+- name: Tailscale installed
+  shell: |
+    set -o pipefail
+    curl -fsSL tailscale.com/install.sh | sh
+  args:
+    executable: /usr/bin/fish
+
+- name: Tailscale running
+  command: tailscale up --auth-key {{ tailscale_authkey }} --advertise-exit-node

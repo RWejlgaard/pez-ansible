@@ -1,0 +1,37 @@
+- name: Update all packages to latest
+  hosts: all
+  become: true
+  gather_facts: true
+
+  tasks:
+    - name: Update Ubuntu packages
+      when: ansible_os_family == 'Debian'
+      apt:
+        upgrade: dist
+        update_cache: true
+
+    - name: Update Alpine Linux packages
+      when: ansible_os_family == 'Alpine'
+      apk:
+        upgrade: true
+        update_cache: true
+
+    - name: Update RHEL/CentOS packages
+      when: ansible_os_family == 'RedHat'
+      yum:
+        name: '*'
+        state: latest
+        update_only: true
+
+    - name: Update Fedora packages
+      when: ansible_os_family == 'Fedora'
+      dnf:
+        name: '*'
+        state: latest
+        update_only: true
+
+    - name: Update Arch Linux packages
+      when: ansible_os_family == 'Archlinux'
+      pacman:
+        upgrade: true
+        update_cache: true

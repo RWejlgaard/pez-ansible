@@ -1,0 +1,6 @@
+- name: All servers
+  hosts: all
+  roles:
+    - tailscale-exit-node
+    - shell-environment
+    - portainer

@@ -1,9 +1,0 @@
----
-- hosts: all
-  vars:
-    k3s_version: v1.25.6+k3s1
-    k3s_control_plane_flags: "--disable traefik --disable metrics-server"
-  tasks:
-    - include: update.yaml
-    - include: k3s.yaml
-

@@ -1,0 +1,29 @@
+- name: Install fish shell
+  package:
+    name: fish
+    state: present
+
+- name: Install chsh for Alpine
+  package:
+    name: shadow
+    state: present
+  when: ansible_os_family == 'Alpine'
+
+- name: Get Fish shell path
+  command: which fish
+  changed_when: false
+  register: fish_path
+
+- name: Set Fish shell as default
+  command: chsh -s {{ fish_path.stdout }}
+  when: ansible_user_shell != fish_path.stdout
+
+- name: Setup Prompt
+  shell: |
+    set -o pipefail
+    curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+    fisher install IlanCosman/tide@v5
+    echo -e "1\n1\n2\n1\n1\n1\ny\n" | tide configure
+  args:
+    executable: /usr/bin/fish
+  when: fish_path.stdout is defined

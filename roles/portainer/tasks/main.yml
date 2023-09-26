@@ -1,0 +1,25 @@
+- name: Include secrets
+  include_vars: secrets.yml
+
+- name: Make sure requests is installed on Alpine
+  apk:
+    name: py3-requests
+    state: present
+  when: ansible_os_family == 'Alpine'
+
+- name: Portainer volume
+  command: docker volume create portainer_data
+
+- name: Portainer container
+  community.general.docker_container:
+    name: portainer
+    state: started
+    image: portainer/portainer-ce:latest
+    detach: true
+    published_ports:
+      - 8000:8000
+      - 9443:9443
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "portainer_data:/data"
+    command: --admin-password "{{ portainer_admin_password }}"
