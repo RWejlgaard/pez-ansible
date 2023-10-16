@@ -1,0 +1,3 @@
+home_assistant_version: stable
+home_assistant_timezone: Europe/London
+home_assistant_config_mount: ~/home-assistant

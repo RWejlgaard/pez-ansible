@@ -9,4 +9,4 @@
     executable: /usr/bin/fish
 
 - name: Tailscale running
-  command: tailscale up --auth-key {{ tailscale_authkey }} --advertise-exit-node
+  command: tailscale up --auth-key {{ tailscale_authkey }} --advertise-exit-node --advertise-routes={{ ansible_default_ipv4.network }}/{{ ansible_default_ipv4.prefix }}

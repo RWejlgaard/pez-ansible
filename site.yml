@@ -1,6 +1,100 @@
-- name: All servers
-  hosts: all
+- hosts: all
   roles:
-    - tailscale-exit-node
-    - shell-environment
-    - portainer
+    - role: docker-host
+    - role: shell-environment
+    - role: tailscale-exit-node
+
+- hosts: "!london-a"
+  roles:
+    - role: portainer-slave
+
+- hosts:
+    - london-a
+    - london-b
+    - copenhagen-c
+  roles:
+    - role: prometheus.prometheus.node_exporter
+
+# Alpine is not supported by official node-exporter role
+- hosts:
+    - copenhagen-a
+    - copenhagen-b
+  roles:
+    - role: node-exporter-docker
+      vars:
+        node_exporter_version: latest
+
+- hosts: london-a
+  roles:
+    - role: grafana.grafana.grafana
+      vars:
+        grafana_security:
+          admin_user: pez
+          admin_password: !vault |
+            $ANSIBLE_VAULT;1.1;AES256
+            30386561653965323237396361663866393364396633356264383666663734333661666237396266
+            3532376336336561313461393139346433373037616165660a333639306432323762643839666332
+            37343235376535353335333537663462346565613964636133373137613538386162333139666134
+            3832333263363834390a343031613962396236383938623431313338636434313166613635643162
+            3663
+        grafana_datasources:
+          - name: Prometheus
+            type: prometheus
+            access: proxy
+            url: http://localhost:9090
+            isDefault: true
+            basicAuth: false
+          - name: Prometheus (Copenhagen)
+            type: prometheus
+            access: proxy
+            url: http://100.119.204.12:9090
+            basicAuth: false
+        grafana_provisioning_synced: true
+    - role: prometheus.prometheus.prometheus
+      vars:
+        prometheus_alertmanager_config:
+          - static_configs:
+            - targets: ["localhost:9093"]
+        prometheus_scrape_configs:
+          - job_name: prometheus
+            scrape_interval: 5s
+            scrape_timeout: 5s
+            static_configs:
+              - targets: ["localhost:9090"]
+
+          - job_name: unpoller
+            static_configs:
+              - targets: ["localhost:9130"]
+
+          - job_name: transmission-exporter
+            static_configs:
+              - targets: ["localhost:19091"]
+        
+          - job_name: london-a
+            static_configs:
+              - targets: ['192.168.1.254:9100']
+        
+          - job_name: london-b
+            static_configs:
+              - targets: ['192.168.1.253:9100']
+
+          - job_name: copenhagen-a
+            static_configs:
+              - targets: ['100.119.204.12:9100']
+        
+          - job_name: copenhagen-b
+            static_configs:
+              - targets: ['100.97.221.65:9100']
+        
+          - job_name: copenhagen-c
+            static_configs:
+              - targets: ['100.115.45.53:9100']
+    - role: portainer-master
+      vars:
+        portainer_admin_password: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          63616238333365383266626364343631653239386565353335313134623934646636373630373161
+          3337393965343061383834323537323130373633346337300a653336383631353963326638643363
+          65626263613232626266373833616334333638353837333864616636633961633262623765616532
+          6337343533306634620a316639333965303134393832626131303763623166613866356164353764
+          3662

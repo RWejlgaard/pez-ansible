@@ -1,0 +1,19 @@
+- name: Make sure requests is installed on Alpine
+  apk:
+    name: py3-requests
+    state: present
+  when: ansible_os_family == 'Alpine'
+
+- name: Home assistant container
+  community.general.docker_container:
+    name: homeassistant
+    state: started
+    image: "ghcr.io/home-assistant/home-assistant:{{ home_assistant_version }}"
+    detach: true
+    restart_policy: always
+    network_mode: host
+    privileged: true
+    env:
+      TZ: "{{ home_assistant_timezone }}"
+    volumes:
+      - "{{ home_assistant_config_mount }}:/config"
