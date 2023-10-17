@@ -48,4 +48,4 @@ jobs:
         run: |
           export ANSIBLE_HOST_KEY_CHECKING=false
           export no_proxy='*'
-          ansible-playbook -i hosts.yml --vault-password-file /tmp/vault_password.txt site.yml
+          ansible-playbook -i hosts.yml -e @secrets.yml --vault-password-file /tmp/vault_password.txt site.yml
