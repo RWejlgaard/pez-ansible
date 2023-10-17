@@ -46,4 +46,6 @@ jobs:
 
       - name: Run Ansible Playbook
         run: |
-          ANSIBLE_HOST_KEY_CHECKING=false ansible-playbook -i hosts.yml --vault-password-file /tmp/vault_password.txt site.yml
+          export ANSIBLE_HOST_KEY_CHECKING=false
+          export no_proxy='*'
+          ansible-playbook -i hosts.yml --vault-password-file /tmp/vault_password.txt site.yml
