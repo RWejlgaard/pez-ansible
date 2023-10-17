@@ -61,7 +61,7 @@
             access: proxy
             url: http://100.119.204.12:9090
             basicAuth: false
-        grafana_provisioning_synced: true
+        grafana_provisioning_synced: false
     - role: prometheus.prometheus.prometheus
       vars:
         prometheus_alertmanager_config:
