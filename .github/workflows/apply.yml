@@ -40,9 +40,9 @@ jobs:
         run: |
           ansible-galaxy collection install -r requirements.yml
 
-      - name: Install python dependencies
+      - name: Install jmespath because GHA is broken
         run: |
-          sudo apt-get install -y python3-jmespath
+          sudo pipx inject ansible-core jmespath
 
       - name: Run Ansible Playbook
         run: |
