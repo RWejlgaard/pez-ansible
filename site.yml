@@ -50,13 +50,6 @@
             url: http://100.119.204.12:9090
             basicAuth: false
         grafana_provisioning_synced: true
-        grafana ini_overrides:
-          - section: "auth.anonymous"
-            option: "enabled"
-            value: "true"
-          - section: "auth.anonymous"
-            option: "org_role"
-            value: "Viewer"
     - role: prometheus.prometheus.prometheus
       vars:
         prometheus_alertmanager_config:
