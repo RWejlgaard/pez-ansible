@@ -34,7 +34,7 @@ jobs:
 
       - name: Install Ansible
         run: |
-          sudo apt-get install ansible
+          sudo apt-get install -y ansible
 
       - name: Install Ansible requirements
         run: |
@@ -42,7 +42,7 @@ jobs:
 
       - name: Install python dependencies
         run: |
-          pip3 install jmespath
+          sudo apt-get install -y python3-jmespath
 
       - name: Run Ansible Playbook
         run: |
