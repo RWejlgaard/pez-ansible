@@ -1,5 +1,0 @@
-- hosts: copenhagen-b
-  roles:
-    - role: gopher-site
-  vars:
-    gopher_repo_url: https://github.com/rwejlgaard/pez-gopher
