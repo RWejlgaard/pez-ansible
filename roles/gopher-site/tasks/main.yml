@@ -1,0 +1,28 @@
+- name: Make sure requests is installed on Alpine
+  apk:
+    name: py3-requests
+    state: present
+  when: ansible_os_family == 'Alpine'
+
+- name: Ensure git is installed
+  package:
+    name: git
+    state: present
+
+- name: Clone pez-gopher
+  git:
+    repo: "{{ gopher_repo_url }}"
+    dest: /var/gopher
+    force: true
+
+- name: Gophernicus container
+  community.general.docker_container:
+    name: gophernicus
+    state: started
+    image: joshkaiju/gophernicus
+    detach: true
+    restart_policy: always
+    ports:
+      "70:70"
+    volumes:
+      - "/var/gopher:/var/gopher"

@@ -104,3 +104,9 @@
     - role: portainer-master
       vars:
         portainer_admin_password: "{{ portainer_admin_password }}"
+
+- hosts: copenhagen-b
+  roles:
+    - role: gopher-site
+  vars:
+    gopher_repo_url: https://github.com/rwejlgaard/pez-gopher
