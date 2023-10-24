@@ -64,6 +64,7 @@
         grafana_provisioning_synced: true
     - role: prometheus.prometheus.prometheus
       vars:
+        prometheus_storage_retention: "365d"
         prometheus_alertmanager_config:
           - static_configs:
               - targets: ["localhost:9093"]
