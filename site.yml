@@ -49,8 +49,6 @@
         grafana_auth:
           anonymous:
             enabled: true
-        grafana_dashboards:
-          - 1860 # node-exporter-full
         grafana_datasources:
           - name: Prometheus
             type: prometheus
