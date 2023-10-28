@@ -56,11 +56,6 @@
             url: http://localhost:9090
             isDefault: true
             basicAuth: false
-          - name: Prometheus (Copenhagen)
-            type: prometheus
-            access: proxy
-            url: http://100.119.204.12:9090
-            basicAuth: false
         grafana_provisioning_synced: true
     - role: prometheus.prometheus.prometheus
       vars:
@@ -93,11 +88,11 @@
 
           - job_name: copenhagen-a
             static_configs:
-              - targets: ['100.119.204.12:9100']
+              - targets: ['100.89.206.60:9100']
 
           - job_name: copenhagen-b
             static_configs:
-              - targets: ['100.97.221.65:9100']
+              - targets: ['100.107.146.142:9100']
 
           - job_name: copenhagen-c
             static_configs:
