@@ -18,7 +18,6 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 4,
   "links": [],
   "liveNow": true,
   "panels": [
@@ -44,7 +43,7 @@
         "content": "[Download Client Link](https://download.pez.sh/transmission)",
         "mode": "markdown"
       },
-      "pluginVersion": "10.1.5",
+      "pluginVersion": "10.2.0",
       "transparent": true,
       "type": "text"
     },
@@ -153,6 +152,8 @@
       },
       "id": 8,
       "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
         "orientation": "vertical",
         "reduceOptions": {
           "calcs": [
@@ -164,7 +165,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "10.1.5",
+      "pluginVersion": "10.2.0",
       "targets": [
         {
           "datasource": {
@@ -231,6 +232,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -353,6 +355,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -586,6 +589,10 @@
                     }
                   ]
                 }
+              },
+              {
+                "id": "displayName",
+                "value": "Progress"
               }
             ]
           },
@@ -756,11 +763,11 @@
         "sortBy": [
           {
             "desc": true,
-            "displayName": "Status"
+            "displayName": "Progress"
           }
         ]
       },
-      "pluginVersion": "10.1.5",
+      "pluginVersion": "10.2.0",
       "targets": [
         {
           "datasource": {
@@ -842,7 +849,6 @@
   ],
   "refresh": "5s",
   "schemaVersion": 38,
-  "style": "dark",
   "tags": [],
   "templating": {
     "list": [
@@ -924,6 +930,6 @@
   "timezone": "browser",
   "title": "Download Client",
   "uid": "c9fdc3fa-e5f0-4e5c-90e1-40f19d7f9c3f",
-  "version": 12,
+  "version": 13,
   "weekStart": ""
 }
