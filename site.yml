@@ -8,21 +8,15 @@
   roles:
     - role: portainer-slave
 
-- hosts:
-    - london-a
-    - london-b
-    - copenhagen-c
+- hosts: all
   roles:
     - role: prometheus.prometheus.node_exporter
-
-# Alpine is not supported by official node-exporter role
-- hosts:
-    - copenhagen-a
-    - copenhagen-b
-  roles:
-    - role: node-exporter-docker
       vars:
-        node_exporter_version: latest
+        node_exporter_enabled_collectors:
+          - systemd
+          - processes
+          - sysctl
+          - ethtool
 
 - hosts: london-a
   roles:
