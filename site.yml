@@ -17,6 +17,7 @@
           - processes
           - sysctl
           - ethtool
+    - role: prometheus.prometheus.systemd_exporter
 
 - hosts: london-a
   roles:
@@ -74,23 +75,34 @@
 
           - job_name: london-a
             static_configs:
-              - targets: ['192.168.1.254:9100']
+              - targets:
+                  - '192.168.1.254:9100'
+                  - '192.168.1.254:9558'
 
           - job_name: london-b
             static_configs:
-              - targets: ['192.168.1.253:9100']
+              - targets: 
+                  - '192.168.1.253:9100'
+                  - '192.168.1.253:9558'
 
           - job_name: copenhagen-a
             static_configs:
-              - targets: ['100.89.206.60:9100']
+              - targets:
+                  - '100.89.206.60:9100'
+                  - '100.89.206.60:9558'
 
           - job_name: copenhagen-b
             static_configs:
-              - targets: ['100.107.146.142:9100']
+              - targets:
+                  - '100.107.146.142:9100'
+                  - '100.107.146.142:9558'
 
           - job_name: copenhagen-c
             static_configs:
-              - targets: ['100.115.45.53:9100']
+              - targets:
+                  - '100.115.45.53:9100'
+                  - '100.115.45.53:9558'
+
     - role: portainer-master
       vars:
         portainer_admin_password: "{{ portainer_admin_password }}"
