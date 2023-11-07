@@ -81,9 +81,15 @@
 
           - job_name: london-b
             static_configs:
-              - targets: 
+              - targets:
                   - '192.168.1.253:9100'
                   - '192.168.1.253:9558'
+
+          - job_name: london-c
+            static_configs:
+              - targets:
+                  - '192.168.1.252:9100'
+                  - '192.168.1.252:9558'
 
           - job_name: copenhagen-a
             static_configs:
