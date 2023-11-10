@@ -1,14 +1,17 @@
-- hosts: all
+- name: "Common roles for all hosts"
+  hosts: all
   roles:
     - role: docker-host
     - role: shell-environment
     - role: tailscale-exit-node
 
-- hosts: "!london-a"
+- name: "Install portainer slave on all except master"
+  hosts: "!london-a"
   roles:
     - role: portainer-slave
 
-- hosts: all
+- name: "Node-exporter on all hosts"
+  hosts: all
   roles:
     - role: prometheus.prometheus.node_exporter
       vars:
@@ -19,7 +22,8 @@
           - ethtool
     - role: prometheus.prometheus.systemd_exporter
 
-- hosts: london-a
+- name: "Monitoring stack"
+  hosts: london-a
   roles:
     - role: prometheus.prometheus.alertmanager
       vars:
@@ -113,7 +117,8 @@
       vars:
         portainer_admin_password: "{{ portainer_admin_password }}"
 
-- hosts: copenhagen-b
+- name: "Gopher site"
+  hosts: copenhagen-b
   roles:
     - role: gopher-site
   vars:
