@@ -61,7 +61,7 @@
       "columns": [],
       "datasource": {
         "type": "prometheus",
-        "name": "Prometheus"
+        "uid": "000000001"
       },
       "description": "This table represents current (latest) data.\nBytes columns are lifetime totals.",
       "fontSize": "80%",
@@ -531,7 +531,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "name": "Prometheus"
+            "uid": "000000001"
           },
           "expr": "sum by (channel,essid,ip,mac,name,network,oui,radio_desc,site_name,source) (\n unpoller_client_receive_bytes_total{wired!=\"true\", site_name=~\"$Site\", name=~\"$Wireless\"})",
           "format": "table",
@@ -543,7 +543,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "name": "Prometheus"
+            "uid": "000000001"
           },
           "expr": "sum by (channel,essid,ip,mac,name,network,oui,radio_desc,site_name,source) (\n unpoller_client_transmit_bytes_total{wired!=\"true\",site_name=~\"$Site\", name=~\"$Wireless\"})",
           "format": "table",
@@ -555,7 +555,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "name": "Prometheus"
+            "uid": "000000001"
           },
           "expr": "sum by (channel,essid,ip,mac,name,network,oui,radio_desc,site_name,source) (\n unpoller_client_uptime_seconds{wired!=\"true\",site_name=~\"$Site\", name=~\"$Wireless\"})",
           "format": "table",
@@ -573,7 +573,7 @@
       "columns": [],
       "datasource": {
         "type": "prometheus",
-        "name": "Prometheus"
+        "uid": "000000001"
       },
       "description": "This table represents current (latest) data.\nBytes columns are lifetime totals.",
       "fontSize": "80%",
@@ -925,7 +925,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "name": "Prometheus"
+            "uid": "000000001"
           },
           "expr": "sum by (ap_name,ip,mac,name,network,oui,site_name,source,sw_port) (\n     unpoller_client_uptime_seconds{wired=\"true\", site_name=~\"$Site\", name=~\"$Wired\", sw_name=~\"$Switch\"})",
           "format": "table",
@@ -936,7 +936,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "name": "Prometheus"
+            "uid": "000000001"
           },
           "expr": "sum by (ap_name,ip,mac,name,network,oui,site_name,source,sw_port) (\n     unpoller_client_receive_bytes_total{wired=\"true\", site_name=~\"$Site\", name=~\"$Wired\", sw_name=~\"$Switch\"})",
           "format": "table",
@@ -948,7 +948,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "name": "Prometheus"
+            "uid": "000000001"
           },
           "expr": "sum by (ap_name,ip,mac,name,network,oui,site_name,source,sw_port) (\n     unpoller_client_transmit_bytes_total{wired=\"true\", site_name=~\"$Site\", name=~\"$Wired\", sw_name=~\"$Switch\"})",
           "format": "table",
@@ -971,7 +971,7 @@
       },
       "datasource": {
         "type": "prometheus",
-        "name": "Prometheus"
+        "uid": "000000001"
       },
       "decimals": 0,
       "description": "Visualize wireless channel usage w/ wired client counts.",
@@ -1007,7 +1007,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "name": "Prometheus"
+            "uid": "000000001"
           },
           "expr": "count by (hostname) (unpoller_client_uptime_seconds{site_name=~\"$Site\", name=~\"$Wired\", sw_name=~\"$Switch\"})",
           "instant": true,
@@ -1017,7 +1017,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "name": "Prometheus"
+            "uid": "000000001"
           },
           "expr": "count by (channel) (unpoller_client_roam_count_total{site_name=~\"$Site\", name=~\"$Wireless\", ap_name=~\"$AP\"})",
           "instant": true,
@@ -1040,7 +1040,7 @@
       },
       "datasource": {
         "type": "prometheus",
-        "name": "Prometheus"
+        "uid": "000000001"
       },
       "decimals": 0,
       "description": "Visualize how many clients are connected to which radios/APs.",
@@ -1076,7 +1076,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "name": "Prometheus"
+            "uid": "000000001"
           },
           "expr": "count by (radio_proto) (unpoller_client_roam_count_total{site_name=~\"$Site\", name=~\"$Wireless\", ap_name=~\"$AP\"})",
           "instant": true,
@@ -1099,7 +1099,7 @@
       },
       "datasource": {
         "type": "prometheus",
-        "name": "Prometheus"
+        "uid": "000000001"
       },
       "decimals": 0,
       "description": "This shows an OUI breakdown from Unifi's perspective. e = wired, w = wireless",
@@ -1138,7 +1138,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "name": "Prometheus"
+            "uid": "000000001"
           },
           "expr": "count by (oui) (unpoller_client_uptime_seconds{site_name=~\"$Site\", name=~\"$Wireless\", ap_name=~\"$AP\"})",
           "hide": false,
@@ -1150,7 +1150,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "name": "Prometheus"
+            "uid": "000000001"
           },
           "expr": "count by (oui) (+unpoller_client_uptime_seconds{site_name=~\"$Site\", name=~\"$Wired\", sw_name=~\"$Switch\"})",
           "hide": false,
@@ -1172,7 +1172,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "name": "Prometheus"
+        "uid": "000000001"
       },
       "description": "Bandwidth usage per wireless devices as reported by the UAPs. Rx is on the negative axis. Does not include amazon devices.",
       "fieldConfig": {
@@ -1231,7 +1231,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "name": "Prometheus"
+            "uid": "000000001"
           },
           "expr": "sum by ($Identifier) (rate(unpoller_client_transmit_bytes_total{name!~\".*camera.*|.*cam(era)?$\", name=~\"$Wireless\", site_name=~\"$Site\", ap_name=~\"$AP\"}[$__interval]))",
           "instant": false,
@@ -1242,7 +1242,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "name": "Prometheus"
+            "uid": "000000001"
           },
           "expr": "sum by ($Identifier) (rate(unpoller_client_receive_bytes_total{name!~\".*camera.*|.*cam(era)?$\", name=~\"$Wireless\", site_name=~\"$Site\", ap_name=~\"$AP\"}[$__interval]))",
           "instant": false,
@@ -1289,7 +1289,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "name": "Prometheus"
+        "uid": "000000001"
       },
       "description": "Wired TX / RX bytes per second (calculated in 30 second buckets). Rx is on the negative axis. Does not include amazon and camera devices. Unaffected by the AP setting.",
       "fieldConfig": {
@@ -1347,7 +1347,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "name": "Prometheus"
+            "uid": "000000001"
           },
           "expr": "sum by ($Identifier) (rate(unpoller_client_transmit_bytes_total{name!~\".*camera.*|.*cam(era)?$\", name=~\"$Wired\", site_name=~\"$Site\", sw_name=~\"$Switch\"}[$__interval]))",
           "interval": "$Smooth",
@@ -1357,7 +1357,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "name": "Prometheus"
+            "uid": "000000001"
           },
           "expr": "sum by ($Identifier) (rate(unpoller_client_receive_bytes_total{name!~\".*camera.*|.*cam(era)?$\", name=~\"$Wired\", site_name=~\"$Site\", sw_name=~\"$Switch\"}[$__interval]))",
           "hide": false,
@@ -1406,7 +1406,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "name": "Prometheus"
+        "uid": "000000001"
       },
       "description": "Amazon Devices TX / RX bytes per second. Rx is on the negative axis. My home network has a ton of Amazon devices, so I broke them out separately. If you don't have Amazon devices, or they have different names, you can edit the query to use a different name. e = wired, w = wireless",
       "fieldConfig": {
@@ -1463,7 +1463,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "name": "Prometheus"
+            "uid": "000000001"
           },
           "expr": "sum by ($Identifier) (rate(unpoller_client_transmit_bytes_total{name=~\"^amazon.*\", name=~\"$Wireless\", site_name=~\"$Site\", ap_name=~\"$AP\"}[$__interval]))",
           "hide": false,
@@ -1474,7 +1474,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "name": "Prometheus"
+            "uid": "000000001"
           },
           "expr": "sum by ($Identifier) (rate(unpoller_client_receive_bytes_total{name=~\"^amazon.*\", name=~\"$Wireless\", site_name=~\"$Site\", ap_name=~\"$AP\"}[$__interval]))",
           "hide": false,
@@ -1485,7 +1485,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "name": "Prometheus"
+            "uid": "000000001"
           },
           "expr": "sum by ($Identifier) (rate(unpoller_client_transmit_bytes_total{name=~\"^amazon.*\", name=~\"$Wired\", site_name=~\"$Site\", sw_name=~\"$Switch\"}[$__interval]))",
           "hide": false,
@@ -1496,7 +1496,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "name": "Prometheus"
+            "uid": "000000001"
           },
           "expr": "sum by ($Identifier) (rate(unpoller_client_receive_bytes_total{name=~\"^amazon.*\", name=~\"$Wired\", site_name=~\"$Site\", sw_name=~\"$Switch\"}[$__interval]))",
           "hide": false,
@@ -1543,7 +1543,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "name": "Prometheus"
+        "uid": "000000001"
       },
       "description": "Cameras TX / RX bytes per second. Rx is on the negative axis. This graph shows any device with the word \"camera\" in its name and has nothing to do with UniFi Protect/video products. e = wired, w = wireless",
       "fieldConfig": {
@@ -1601,7 +1601,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "name": "Prometheus"
+            "uid": "000000001"
           },
           "expr": "sum by ($Identifier) (rate(unpoller_client_transmit_bytes_total{ap_name=~\"$AP\", name=~\".*camera.*|.*cam$\", site_name=~\"$Site\"}[$__interval]))",
           "hide": false,
@@ -1613,7 +1613,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "name": "Prometheus"
+            "uid": "000000001"
           },
           "expr": "sum by ($Identifier) (rate(unpoller_client_receive_bytes_total{ap_name=~\"$AP\", name=~\".*camera.*|.*cam$\", site_name=~\"$Site\"}[$__interval]))",
           "hide": false,
@@ -1624,7 +1624,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "name": "Prometheus"
+            "uid": "000000001"
           },
           "expr": "sum by ($Identifier) (rate(unpoller_client_transmit_bytes_total{sw_name=~\"$Switch\", name=~\".*camera.*|.*cam$\", site_name=~\"$Site\"}[$__interval]))",
           "hide": false,
@@ -1635,7 +1635,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "name": "Prometheus"
+            "uid": "000000001"
           },
           "expr": "sum by ($Identifier) (rate(unpoller_client_receive_bytes_total{sw_name=~\"$Switch\", name=~\".*camera.*|.*cam$\", site_name=~\"$Site\"}[$__interval]))",
           "hide": false,
@@ -1682,7 +1682,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "name": "Prometheus"
+        "uid": "000000001"
       },
       "decimals": 0,
       "fieldConfig": {
@@ -1735,7 +1735,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "name": "Prometheus"
+            "uid": "000000001"
           },
           "expr": "sum by ($Identifier) (unpoller_client_rssi_db{ap_name=~\"$AP\", site_name=~\"$Site\", name=~\"$Wireless\"})",
           "interval": "1m",
@@ -1783,7 +1783,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "name": "Prometheus"
+        "uid": "000000001"
       },
       "decimals": 0,
       "fieldConfig": {
@@ -1836,7 +1836,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "name": "Prometheus"
+            "uid": "000000001"
           },
           "expr": "sum by ($Identifier) (unpoller_client_radio_signal_db{ap_name=~\"$AP\", site_name=~\"$Site\", name=~\"$Wireless\"})",
           "instant": false,
@@ -1886,7 +1886,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "name": "Prometheus"
+        "uid": "000000001"
       },
       "decimals": 0,
       "fieldConfig": {
@@ -1939,7 +1939,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "name": "Prometheus"
+            "uid": "000000001"
           },
           "expr": "sum by ($Identifier) (unpoller_client_noise_db{ap_name=~\"$AP\", site_name=~\"$Site\", name=~\"$Wireless\"})",
           "instant": false,
@@ -1987,7 +1987,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "name": "Prometheus"
+        "uid": "000000001"
       },
       "description": "Client reported transmit rate.",
       "fieldConfig": {
@@ -2038,7 +2038,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "name": "Prometheus"
+            "uid": "000000001"
           },
           "expr": "sum by ($Identifier) (unpoller_client_radio_transmit_rate_bps{ap_name=~\"$AP\", site_name=~\"$Site\", name=~\"$Wireless\"})",
           "interval": "$Smooth",
@@ -2084,7 +2084,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "name": "Prometheus"
+        "uid": "000000001"
       },
       "decimals": 0,
       "fieldConfig": {
@@ -2137,7 +2137,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "name": "Prometheus"
+            "uid": "000000001"
           },
           "expr": "avg by ($Identifier) (rate(unpoller_client_wifi_attempts_transmit_total{ap_name=~\"$AP\", site_name=~\"$Site\", name=~\"$Wireless\"}[$__interval]))",
           "interval": "$Smooth",
@@ -2185,7 +2185,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "name": "Prometheus"
+        "uid": "000000001"
       },
       "description": "Client reported receive rate.",
       "fieldConfig": {
@@ -2238,7 +2238,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "name": "Prometheus"
+            "uid": "000000001"
           },
           "expr": "sum by ($Identifier) (unpoller_client_radio_receive_rate_bps{ap_name=~\"$AP\", site_name=~\"$Site\", name=~\"$Wireless\"})",
           "interval": "$Smooth",
@@ -2285,7 +2285,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "name": "Prometheus"
+        "uid": "000000001"
       },
       "decimals": 0,
       "fieldConfig": {
@@ -2338,7 +2338,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "name": "Prometheus"
+            "uid": "000000001"
           },
           "expr": "sum by ($Identifier) (rate(unpoller_client_transmit_retries_total{ap_name=~\"$AP\", site_name=~\"$Site\", name=~\"$Wireless\"}[$__interval]))",
           "interval": "$Smooth",
@@ -2385,7 +2385,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "name": "Prometheus"
+        "uid": "000000001"
       },
       "decimals": 0,
       "fieldConfig": {
@@ -2438,7 +2438,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "name": "Prometheus"
+            "uid": "000000001"
           },
           "expr": "sum by ($Identifier) (unpoller_client_radio_transmit_power_dbm{ap_name=~\"$AP\", site_name=~\"$Site\", name=~\"$Wireless\"})",
           "interval": "$Smooth",
@@ -2485,7 +2485,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "name": "Prometheus"
+        "uid": "000000001"
       },
       "decimals": 0,
       "fieldConfig": {
@@ -2538,7 +2538,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "name": "Prometheus"
+            "uid": "000000001"
           },
           "expr": "sum by ($Identifier) (unpoller_client_anomalies{ap_name=~\"$AP\", site_name=~\"$Site\", name=~\"$Wireless\"})",
           "interval": "$Smooth",
@@ -2586,7 +2586,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "name": "Prometheus"
+        "uid": "000000001"
       },
       "decimals": 0,
       "fieldConfig": {
@@ -2639,7 +2639,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "name": "Prometheus"
+            "uid": "000000001"
           },
           "expr": "sum by ($Identifier) (unpoller_client_satisfaction_ratio{ap_name=~\"$AP\", site_name=~\"$Site\", name=~\"$Wireless\"})",
           "interval": "$Smooth",
@@ -2689,7 +2689,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "name": "Prometheus"
+        "uid": "000000001"
       },
       "decimals": 0,
       "fieldConfig": {
@@ -2742,7 +2742,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "name": "Prometheus"
+            "uid": "000000001"
           },
           "expr": "sum by ($Identifier) (unpoller_client_roam_count_total{ap_name=~\"$AP\", site_name=~\"$Site\", name=~\"$Wireless\"})",
           "interval": "$Smooth",
@@ -2789,7 +2789,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "name": "Prometheus"
+        "uid": "000000001"
       },
       "decimals": 0,
       "fieldConfig": {
@@ -2842,7 +2842,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "name": "Prometheus"
+            "uid": "000000001"
           },
           "expr": "sum by ($Identifier) (unpoller_client_ccq_ratio{ap_name=~\"$AP\", site_name=~\"$Site\", name=~\"$Wireless\"})",
           "interval": "$Smooth",
@@ -2902,7 +2902,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "name": "Prometheus"
+          "uid": "000000001"
         },
         "definition": "label_values(unpoller_client_uptime_seconds,source)",
         "hide": 2,
@@ -2929,7 +2929,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "name": "Prometheus"
+          "uid": "000000001"
         },
         "definition": "label_values(unpoller_client_uptime_seconds{source=~\"$Controller\"},site_name)",
         "hide": 0,
@@ -2956,7 +2956,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "name": "Prometheus"
+          "uid": "000000001"
         },
         "definition": "label_values(unpoller_client_uptime_seconds{site_name=~\"$Site\"},ap_name)",
         "hide": 0,
@@ -2983,7 +2983,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "name": "Prometheus"
+          "uid": "000000001"
         },
         "definition": "label_values(unpoller_client_uptime_seconds{site_name=~\"$Site\"},sw_name)",
         "hide": 0,
@@ -3010,7 +3010,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "name": "Prometheus"
+          "uid": "000000001"
         },
         "definition": "label_values(unpoller_client_uptime_seconds{site_name=~\"$Site\", ap_name=~\"$AP\", wired=\"false\"},name)",
         "hide": 0,
@@ -3037,7 +3037,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "name": "Prometheus"
+          "uid": "000000001"
         },
         "definition": "label_values(unpoller_client_uptime_seconds{site_name=~\"$Site\", sw_name=~\"$Switch\", wired=\"true\"},name)",
         "hide": 0,
