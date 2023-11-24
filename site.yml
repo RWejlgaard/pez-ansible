@@ -113,6 +113,15 @@
                   - '100.115.45.53:9100'
                   - '100.115.45.53:9558'
 
+          - job_name: exportarr
+            scrape_timeout: 60s
+            scrape_interval: 60s
+            static_configs:
+            - targets:
+              - 127.0.0.1:9707
+              - 127.0.0.1:9708
+              - 127.0.0.1:9709
+
     - role: portainer-master
       vars:
         portainer_admin_password: "{{ portainer_admin_password }}"
